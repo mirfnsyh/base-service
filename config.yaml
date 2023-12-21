@@ -1,0 +1,15 @@
+app:
+  host: "0.0.0.0"
+  env: "local"
+  port: 9001
+  code: "001"
+  version: "v0.0.1-local"
+
+database:
+  driver: "mysql"
+  name: "base"
+  user: "root"
+  password: "root"
+  host: "0.0.0.0"
+  port: "3306"
+  additionalParameters: "charset=utf8mb4&parseTime=true"
