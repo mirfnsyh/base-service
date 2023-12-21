@@ -1,0 +1,36 @@
+version: ""
+
+services:
+  db:
+    container_name: db-mysql-base
+    image: mysql:latest
+    platform: linux/amd64
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: base
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql-base:/var/lib/mysql
+    networks:
+      - server-side
+
+  adminer:
+    container_name: db-adminer-base
+    image: adminer:latest
+    restart: always
+    depends_on:
+      - db
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+    ports:
+      - 5050:8080
+    networks:
+      - server-side
+
+networks:
+  server-side:
+
+volumes:
+  mysql-base:
